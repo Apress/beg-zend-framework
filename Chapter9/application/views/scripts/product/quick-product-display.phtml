@@ -1,0 +1,26 @@
+<?php echo $this->doctype('XHTML1_STRICT'); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+   <?php echo $this->headTitle('Loudbite.com - Artist Products'); ?>
+</head>
+<body>
+<?php echo $this->render("includes/header.phtml")?>
+
+<?php if($this->products->totalResults()){ ?>
+<table border="1" width="300">
+
+  <tr><td colspan="2">You might be interested in these items</td></tr>
+
+  <?php foreach($this->products as $product){?>
+     <tr><td><img src="<?php echo $product->SmallImage->Url ?>" width="50" 
+                  height="50"></td>
+     <td>
+       <a href="<?php echo $product->DetailPageURL ?>"><?php echo $product->Title ?>
+       </a>
+     </td></tr>
+<?php } ?>
+
+</table>
+<?php } ?>
+</body>
+</html>

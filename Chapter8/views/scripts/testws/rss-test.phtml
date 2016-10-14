@@ -1,0 +1,29 @@
+<?php echo $this->doctype('XHTML1_STRICT'); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+   <?php echo $this->headTitle('LoudBite.com – Artist List'); ?>
+</head>
+<body>
+
+<?php echo $this->render("includes/header.phtml")?>
+
+<h3>Channel Information</h3>
+Title: <a href="<?php echo $this->link ?>"><?php echo $this->title ?></a> 
+- <i><?php echo $this->copyright ?></i><br>
+Description: <?php echo $this->description ?><br>
+Category: <?php echo $this->category ?><br>
+Published Date: <?php echo $this->pubDate ?><br>
+
+<h3>Articles</h3>
+<p>
+<?php foreach($this->articles as $article){ ?>
+
+    <a href="<?php echo $article['link'] ?>"><?php echo $article['title'] ?></a>
+  </b><br>
+  <?php echo $article['description'] ?><br/>
+<?php } ?>
+</p>
+
+</body>
+</html>
+

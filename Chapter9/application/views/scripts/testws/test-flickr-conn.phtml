@@ -1,0 +1,16 @@
+<?php echo $this->doctype('XHTML1_STRICT'); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+   <?php echo $this->headTitle('Example - Flickr '); ?>
+</head>
+<body>
+<?php echo $this->render("includes/header.phtml")?>
+
+<?php
+foreach($this->photos as $photo){
+   $thumbnail = $photo->Thumbnail->uri;
+?>
+<img src='<?php echo $thumbnail ?>'>
+</body>
+</html>
+<?php } ?>

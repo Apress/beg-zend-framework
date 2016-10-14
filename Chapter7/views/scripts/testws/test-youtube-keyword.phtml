@@ -1,0 +1,29 @@
+<?php echo $this->doctype('XHTML1_STRICT'); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+   <?php echo $this->headTitle('Example - YouTube Keyword Search'); ?>
+</head>
+<body>
+
+<?php
+foreach($this->videos as $video){
+
+$title        = $video->getVideoTitle();
+$uri          = $video->getVideoWatchPageUrl();
+$description  = $video->getVideoDescription();
+$thumbnails   = $video->getVideoThumbnails();
+$duration     = $video->getVideoDuration();
+$thumbnail    = $thumbnails[1]['url'];
+?>
+
+<table>
+<tr><td><img src='<?php echo $thumbnail ?>' height=50 width=50></td>
+    <td valign="top"><a href='<?php echo $uri ?>'><?php echo $title ?></a><br>
+    Duration <?php echo $duration ?> sec</td>
+</tr>
+</table>
+
+<?php
+}
+?>
+</html>

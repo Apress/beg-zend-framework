@@ -1,0 +1,46 @@
+<?php echo $this->doctype('XHTML1_STRICT'); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<?php echo $this->headTitle('LoudBite.com - Add Artist'); ?>
+</head>
+<body>
+
+<?php echo $this->render('includes/header.phtml') ?>
+
+   <h2>Add Artist</h2>
+   <form method="post" action="save-artist">
+   <table width="500" border="0" cellpadding="5">
+   <tr>
+      <td>Artist Name:</td>
+      <td><input type="text" name="artistName" /></td>
+   </tr>
+   <tr>
+      <td>Genre:</td>
+      <td>
+        <select name="genre">
+          <?php foreach ($this->genres as $genre){ ?>
+          <option value="<?php echo $genre ?>"><?php echo $genre ?></option>
+          <?php } ?>
+        </select>
+      </td>   </tr>
+   <tr>
+      <td>Add to Favorite List</td>
+      <td>Yes <input type="radio" value="yes" name="isFav"/>  |
+      No <input type="radio" value="no" name="isFav" /></td>
+   </tr>
+   <tr>
+      <td>Rate:</td>
+      <td>1 <input type="radio" name="rating" value="1"/> |
+      2 <input type="radio" name="rating" value="2"/> |
+      3 <input type="radio" name="rating" value="3"/> |
+      4 <input type="radio" name="rating" value="4"/> |
+      5 <input type="radio" name="rating" value="5"/></td>
+   </tr>
+   <tr>
+      <td colspan="2"><input type="submit" value="Add Artist" /></td>
+   </tr>
+   </table>
+   </form>
+   </body>
+</html>

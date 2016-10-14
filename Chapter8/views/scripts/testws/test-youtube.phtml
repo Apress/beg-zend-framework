@@ -1,0 +1,26 @@
+<?php echo $this->doctype('XHTML1_STRICT'); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+   <?php echo $this->headTitle('Example - YouTube'); ?>
+</head>
+<body>
+
+<h2>Favorite Video of All Time!</h2><br>
+<?php
+$title       = $this->video->getVideoTitle();
+$uri         = $this->video->getVideoWatchPageUrl();
+$description = $this->video->getVideoDescription();
+$thumbnails  = $this->video->getVideoThumbnails();
+$duration    = $this->video->getVideoDuration();
+$thumbnail   = $thumbnails[1]['url'];
+$ratingInfo  = $this->video->getRating();
+?>
+<table>
+<tr><td valign="top"><img src='<?php echo $thumbnail ?>' height=50 width=50></td>
+    <td valign="top"><a href='<?php echo $uri ?>'><?php echo $title ?></a><br>
+    Duration <?php echo $duration?> sec<br> 
+    Avg Rating: <?php echo $ratingInfo->average ?><br>
+    Total Rated: <?php echo $ratingInfo->numRaters ?></td>
+</tr>
+</table>
+</html>

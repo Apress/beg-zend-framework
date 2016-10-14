@@ -1,0 +1,53 @@
+<?php echo $this->doctype('XHTML1_STRICT'); ?>
+<html>
+<head>
+ <?php echo $this->headTitle('LoudBite.com – Account Manager'); ?>
+</head>
+<body>
+<?php echo $this->render("includes/header.phtml"); ?>
+<h2>LoudBite My Page - <?php echo $this->escape($this->username); ?></h2>
+
+<!--- MAIN CONTAINER -->
+<table>
+<tr><td valign="top">
+
+   <!--PROFILE DATA-->
+   <table width="300" border="1">
+   <tr><td>Username: <?php echo $this->escape($this->username); ?></td></tr>
+   <tr><td>Date Joined: <?php echo $this->dateJoined?></td></tr>
+   </table>
+
+</td>
+<td valign="top">
+
+   <!--FAVORITE BAND LIST-->
+   <table width="300" border="1">
+   <?php if($this->artists){?>
+
+      <tr align="center">
+      <td><b>Artist Name</b></td>
+      <td><b>Date Became A Fan</b></td>
+      </tr>
+
+   <?php foreach($this->artists as $artist){?>
+      <tr>
+         <td><a href='artist/<?php echo
+             urlencode($artist['artist_name'])?>'>
+             <?php echo $this->escape($artist['artist_name']); ?></a></td>
+         <td><?php echo $this->escape($artist['date_became_fan']); ?></td></tr>
+
+   <?php }
+
+   }else{
+   ?>
+
+<tr><td>You currently have no favorite artists.</td></tr>
+
+<?php }?>
+ </table>
+
+</td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<?php echo $this->doctype('XHTML1_STRICT'); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+   <?php echo $this->headTitle('Loudbite.com - Flick Photos'); ?>
+</head>
+<body>
+<?php echo $this->render("includes/header.phtml")?>
+
+<body>
+<?php
+if($this->photos->totalResults() > 0){
+   foreach($this->photos as $photo){
+      $thumbnail = $photo->Thumbnail->uri;
+      $original = $photo->Original->uri;
+?>
+	<?php 
+if(!empty($origin)){?>
+      <a href='<?php echo $original ?>'>
+      <?php }?>
+      <img src='<?php echo $thumbnail ?>'>
+      <?php {?>
+      </a>
+      <?php }?>
+
+<?php
+   }
+}else{ ?>
+We're sorry there were no photos available.
+<?php } ?>
+</body>
+</html>

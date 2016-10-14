@@ -1,0 +1,45 @@
+<?php echo $this->doctype('XHTML1_STRICT'); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+   <?php echo $this->headTitle('LoudBite.com – Artist List'); ?>
+</head>
+<body>
+
+<?php echo $this->render("includes/header.phtml")?>
+
+<table border='0' width='600'>
+
+<?php
+if ($this->paginator){
+
+   echo " <tr><td><b>Total Artists:</b> ".
+          $this->paginator->getTotalItemCount()."</td></tr>";
+
+   foreach($this->paginator as $item){
+
+      echo "<tr><td>".$item."</td></tr>";
+
+   }
+
+   echo "<tr><td>";
+   echo $this->paginationControl($this->paginator,
+                                 'Sliding',
+                                 'includes/paginationcontrol.phtml');
+   echo "</td></tr>";
+
+}else{?>
+
+   <tr>
+      <td>There were no artists present in the system.  
+          Add one now!</td>
+   </tr>
+
+<?php
+
+}
+ 
+?>
+
+</table>
+</body>
+</html>

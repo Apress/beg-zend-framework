@@ -1,0 +1,45 @@
+<?php echo $this->doctype('XHTML1_STRICT'); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+   <?php echo $this->headTitle('LoudBite.com – View All Accounts'); ?>
+</head>
+<body>
+
+<?php echo $this->render("includes/header.phtml"); ?>
+<h2>Active User List</h2>
+
+<table width="300" border="1">
+
+<?php if($this->members){ ?>
+   Total active members: <?php echo $this->totalMembers; ?>
+   <tr align="center">
+      <td><b>Member Name</b></td>
+      <td><b>Date Joined</b></td>
+   </tr>
+
+   <?php
+   foreach($this->members as $member){
+   ?>
+
+      <tr>
+         <td><a href='/<?php echo urlencode($member['username'])?>'>
+             <?php echo $member['username']?>
+             </a></td>
+         <td><?php echo $member['created_date']?></td>
+      </tr>
+   <?php
+   }
+
+}else{
+?>
+   <tr>
+      <td>There are no active members in the system.</td>
+   </tr>
+
+<?php 
+} 
+?>
+
+</table>
+</body>
+</html>
